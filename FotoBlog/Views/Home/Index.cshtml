@@ -1,0 +1,26 @@
+﻿@model List<Gonderi>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="gonderiler">
+    @if (Context.Request.Query["Sonuc"] == "Eklendi")
+    {
+        <div class="alert alert-success">
+            Gönderi başarıyla oluşturuldu.
+        </div>
+    }
+
+    <div class="d-flex mb-3">
+        <a asp-action="Yeni" asp-controller="Gonderiler" class="btn btn-success ms-auto">Yeni Gönderi Ekle</a>
+    </div>    
+
+    @foreach (Gonderi a in Model)
+    {
+        <div class="mb-4">
+            <h4>@a.Baslik</h4>
+            <img class="w-100" src="~/img/upload/@a.ResimYolu" />
+        </div>
+    }
+</div>
