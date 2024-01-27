@@ -1,0 +1,23 @@
+﻿@model Gonderi
+
+<h2>Gönderiyi silmek istediğinize emin misiniz?</h2>
+
+<form asp-controller="Gonderiler" asp-action="Sil" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label asp-for="Baslik" class="form-label"></label>
+        <input asp-for="Baslik" type="hidden" />
+        <textarea asp-for="Baslik" class="form-control" disabled></textarea>
+        <span asp-validation-for="Baslik" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ResimYolu" class="form-label"></label>
+        <input asp-for="ResimYolu" type="hidden" value="@Model.ResimYolu" />
+        <div>
+            <img src="~/img/upload/@Model.ResimYolu" alt="@Model.Id" class="w-50" />
+        </div>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Sil</button>
+        <button asp-controller="Home" asp-action="Index" class="btn btn-secondary">İptal</button>
+    </div>
+</form>

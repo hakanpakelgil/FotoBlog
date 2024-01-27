@@ -1,5 +1,9 @@
 ﻿@model List<Gonderi>
 
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -9,6 +13,18 @@
     {
         <div class="alert alert-success">
             Gönderi başarıyla oluşturuldu.
+        </div>
+    }
+    @if (Context.Request.Query["Sonuc"] == "Güncellendi")
+    {
+        <div class="alert alert-success">
+            Gönderi başarıyla güncellendi.
+        </div>
+    }
+    @if (Context.Request.Query["Sonuc"] == "Silindi")
+    {
+        <div class="alert alert-success">
+            Gönderi başarıyla silindi.
         </div>
     }
 
@@ -21,6 +37,8 @@
         <div class="mb-4">
             <h4>@a.Baslik</h4>
             <img class="w-100" src="~/img/upload/@a.ResimYolu" />
+            <a asp-controller="Gonderiler" asp-action="Sil" asp-route-id="@a.Id" class="btn btn-danger mt-2"><i class="fa-solid fa-trash"></i></a>
+            <a asp-controller="Gonderiler" asp-action="Guncelle" asp-route-id="@a.Id" class="btn btn-info mt-2"><i class="fa-solid fa-pen-to-square"></i></a>
         </div>
     }
 </div>

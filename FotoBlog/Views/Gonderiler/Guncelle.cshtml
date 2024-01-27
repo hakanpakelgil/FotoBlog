@@ -1,0 +1,19 @@
+﻿@model GuncellenecekGonderiViewModel
+
+<form method="post" enctype="multipart/form-data" asp-action="Guncelle">
+<div class="gonderiler">
+    <input class="form-control mb-3" asp-for="Baslik" />
+        <div class="mb-3">
+            <input asp-for="ResimYolu" type="hidden" value="@Model.ResimYolu" />
+            <img src="~/img/upload/@Model.ResimYolu" alt="@Model.Id" class="w-50" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Resim" class="form-label"></label>
+            <input asp-for="Resim" type="file" class="form-control" />
+            <span asp-validation-for="Resim" class="text-danger"></span>
+        </div>
+
+    <button class="btn btn-primary">GÜNCELLE</button>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-danger">İPTAL</a>
+</div>
+</form>
